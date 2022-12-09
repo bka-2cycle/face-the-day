@@ -1,0 +1,98 @@
+var happyMovies = [
+  {
+    id: 1,
+    title: "Beetlejuice",
+    year: "1988",
+    runtime: "92",
+    genres: ["Comedy", "Fantasy"],
+    director: "Tim Burton",
+    actors: "Alec Baldwin, Geena Davis, Annie McEnroe, Maurice Page",
+    plot: 'A couple of recently deceased ghosts contract the services of a "bio-exorcist" in order to remove the obnoxious new owners of their house.',
+    posterUrl:
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTUwODE3MDE0MV5BMl5BanBnXkFtZTgwNTk1MjI4MzE@._V1_SX300.jpg",
+  },
+  {
+    id: 4,
+    title: "Crocodile Dundee",
+    year: "1986",
+    runtime: "97",
+    genres: ["Adventure", "Comedy"],
+    director: "Peter Faiman",
+    actors: "Paul Hogan, Linda Kozlowski, John Meillon, David Gulpilil",
+    plot: "An American reporter goes to the Australian outback to meet an eccentric crocodile poacher and invites him to New York City.",
+    posterUrl:
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTg0MTU1MTg4NF5BMl5BanBnXkFtZTgwMDgzNzYxMTE@._V1_SX300.jpg",
+  },
+  {
+    id: 6,
+    title: "Ratatouille",
+    year: "2007",
+    runtime: "111",
+    genres: ["Animation", "Comedy", "Family"],
+    director: "Brad Bird, Jan Pinkava",
+    actors: "Patton Oswalt, Ian Holm, Lou Romano, Brian Dennehy",
+    plot: "A rat who can cook makes an unusual alliance with a young kitchen worker at a famous restaurant.",
+    posterUrl:
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTMzODU0NTkxMF5BMl5BanBnXkFtZTcwMjQ4MzMzMw@@._V1_SX300.jpg",
+  },
+  {
+    id: 9,
+    title: "The Intouchables",
+    year: "2011",
+    runtime: "112",
+    genres: ["Biography", "Comedy", "Drama"],
+    director: "Olivier Nakache, Eric Toledano",
+    actors: "François Cluzet, Omar Sy, Anne Le Ny, Audrey Fleurot",
+    plot: "After he becomes a quadriplegic from a paragliding accident, an aristocrat hires a young man from the projects to be his caregiver.",
+    posterUrl:
+      "http://ia.media-imdb.com/images/M/MV5BMTYxNDA3MDQwNl5BMl5BanBnXkFtZTcwNTU4Mzc1Nw@@._V1_SX300.jpg",
+  },
+  {
+    id: 14,
+    title: "Planet 51",
+    year: "2009",
+    runtime: "91",
+    genres: ["Animation", "Adventure", "Comedy"],
+    director: "Jorge Blanco, Javier Abad, Marcos Martínez",
+    actors: "Jessica Biel, John Cleese, Gary Oldman, Dwayne Johnson",
+    plot: "An alien civilization is invaded by Astronaut Chuck Baker, who believes that the planet was uninhabited. Wanted by the military, Baker must get back to his ship before it goes into orbit without him.",
+    posterUrl:
+      "http://ia.media-imdb.com/images/M/MV5BMTUyOTAyNTA5Ml5BMl5BanBnXkFtZTcwODU2OTM0Mg@@._V1_SX300.jpg",
+  },
+  {
+    id: 24,
+    title: "Chasing Amy",
+    year: "1997",
+    runtime: "113",
+    genres: ["Comedy", "Drama", "Romance"],
+    director: "Kevin Smith",
+    actors: "Ethan Suplee, Ben Affleck, Scott Mosier, Jason Lee",
+    plot: "Holden and Banky are comic book artists. Everything's going good for them until they meet Alyssa, also a comic book artist. Holden falls for her, but his hopes are crushed when he finds out she's gay.",
+    posterUrl:
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BZDM3MTg2MGUtZDM0MC00NzMwLWE5NjItOWFjNjA2M2I4YzgxXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
+  },
+  {
+    id: 28,
+    title: "Snatch",
+    year: "2000",
+    runtime: "102",
+    genres: ["Comedy", "Crime"],
+    director: "Guy Ritchie",
+    actors: "Benicio Del Toro, Dennis Farina, Vinnie Jones, Brad Pitt",
+    plot: "Unscrupulous boxing promoters, violent bookmakers, a Russian gangster, incompetent amateur robbers, and supposedly Jewish jewelers fight to track down a priceless stolen diamond.",
+    posterUrl:
+      "http://ia.media-imdb.com/images/M/MV5BMTA2NDYxOGYtYjU1Mi00Y2QzLTgxMTQtMWI1MGI0ZGQ5MmU4XkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_SX300.jpg",
+  },
+  {
+    id: 31,
+    title: "Lock, Stock and Two Smoking Barrels",
+    year: "1998",
+    runtime: "107",
+    genres: ["Comedy", "Crime"],
+    director: "Guy Ritchie",
+    actors: "Jason Flemyng, Dexter Fletcher, Nick Moran, Jason Statham",
+    plot: "A botched card game in London triggers four friends, thugs, weed-growers, hard gangsters, loan sharks and debt collectors to collide with each other in a series of unexpected events, all for the sake of weed, cash and two antique shotguns.",
+    posterUrl:
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTAyN2JmZmEtNjAyMy00NzYwLThmY2MtYWQ3OGNhNjExMmM4XkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_SX300.jpg",
+  },
+];
