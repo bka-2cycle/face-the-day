@@ -17,13 +17,13 @@ Go to [app page](https://bka-2cycle.github.io/face-the-day) and follow the promp
 
 ## Usage
 
-Click on the "Generate Password" button to get through the prompts as shown below:
+Start by choosing a "Happy" or "Sad" mood, then click on "Get Me On My Way" button to get through the prompts as shown below:
 
-![Application](./Assets/images/app-demo.gif)
+![Application](./assets/images/Screen%20Shot%202022-12-10%20at%203.44.08%20PM.png)
 
 ## Credits
 
-- [Adam Stovall](https://github.com/adam-stovall)
+- [Adam Stovall](https://github.com/AHStovall)
 - [Brian Allison](https://github.com/bka-2cycle)
 - [Sha Chambers](https://github.com/SuzyChambers)
 - [Salma Loum](https://github.com/SalmaLoum)

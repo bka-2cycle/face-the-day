@@ -6,10 +6,8 @@
   font-family: "Alegreya Sans", sans-serif, "Shadows Into Light", cursive;
 }
 
-
 /* declaring variables */
 :root {
-  
   --dark: #13293d;
   --light: #fff;
   --radius: 50px;
@@ -18,7 +16,6 @@
 
 /* Element Selectors */
 body {
-
 }
 
 /* ID Selectors */
