@@ -1875,15 +1875,19 @@ $.ajax(settings).done(function (response) {
 var currentDay = parseInt(dayjs().format("DD"));
 var currentMonth = parseInt(dayjs().format("MM"));
 $.ajax({
-    method: 'GET',
-    url: 'https://api.api-ninjas.com/v1/historicalevents?month= ' + currentMonth + '&day=' + currentDay,
-    headers: { 'X-Api-Key': '2BBnkoXLrjGGiNAQH2Ro4w==NOgSn3Rp69M1b94m'},
-    contentType: 'application/json',
-    success: function(result) {
-        console.log(result[0]);
-        document.querySelector('#event-history').textContent = result[0].event;
-    },
-    error: function ajaxError(jqXHR) {
-        console.error('Error: ', jqXHR.responseText);
-    }
+  method: "GET",
+  url:
+    "https://api.api-ninjas.com/v1/historicalevents?month= " +
+    currentMonth +
+    "&day=" +
+    currentDay,
+  headers: { "X-Api-Key": "2BBnkoXLrjGGiNAQH2Ro4w==NOgSn3Rp69M1b94m" },
+  contentType: "application/json",
+  success: function (result) {
+    console.log(result[0]);
+    document.querySelector("#event-history").textContent = result[0].event;
+  },
+  error: function ajaxError(jqXHR) {
+    console.error("Error: ", jqXHR.responseText);
+  },
 });
