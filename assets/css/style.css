@@ -1,0 +1,40 @@
+/* Universal Selector */
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Alegreya Sans", sans-serif, "Shadows Into Light", cursive;
+  }
+  
+  
+  /* declaring variables */
+  :root {
+    
+    --dark: #13293d;
+    --light: #fff;
+    --radius: 50px;
+    --center: center;
+  }
+  
+  /* Element Selectors */
+  body {
+  
+  }
+  
+  /* ID Selectors */
+  
+  /* Class Selectors */
+  
+  /* Media Queries */
+  
+  /* Tablets */
+  @media screen and (max-width: 992px) {
+  }
+  
+  /* Large smartphones */
+  @media screen and (max-width: 768px) {
+  }
+  
+  /* Small smartphones */
+  @media screen and (max-width: 576px) {
+  }
