@@ -1884,9 +1884,23 @@ $.ajax({
   contentType: "application/json",
   success: function (result) {
     console.log(result[0]);
-    document.querySelector("#event-history").textContent = result[0].event;
+    document.querySelector("#event-history").textContent = result[9].event;
   },
   error: function ajaxError(jqXHR) {
     console.error("Error: ", jqXHR.responseText);
   },
+});
+
+//Joke API
+var limit = 3
+$.ajax({
+    method: 'GET',
+    url: 'https://api.api-ninjas.com/v1/jokes?limit=1', /*+ limit,*/
+    headers: { 'X-Api-Key': 'Zx/7z3+LnT83tllYBTvk+A==t3oKjDpCz5DD8Tyw'},
+    contentType: 'application/json',
+    success: function(result) {
+        console.log(result);
+        document.querySelector('#random-joke').textContent = result[0].joke;
+    }
+
 });
