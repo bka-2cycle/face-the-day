@@ -1,10 +1,37 @@
 //omdb movie links. add key 
 //change url after variables are established
 //this link is only to one movie but with data function having all listed vars, pulling from all will be as easy as pullign from one
+//happy movies array using API links(Praying it wokrs)
+var happyMoviesArray = [
+  "https://www.omdbapi.com/?t=Little-Miss-Sunshine&apikey=189f17cc",
+  "https://www.omdbapi.com/?t=Love-Actually&apikey=189f17cc",
+  "https://www.omdbapi.com/?t=Good-Will-Hunting&apikey=189f17cc",
+  "https://www.omdbapi.com/?t=Forrest%20Gump&apikey=189f17cc",
+  "https://www.omdbapi.com/?t=Despicable-Me&apikey=189f17cc",
+  "https://www.omdbapi.com/?t=Sound-of-Music&apikey=189f17cc",
+  "https://www.omdbapi.com/?t=It%27s-A-Wonderful-Life&apikey=189f17cc",
+  "https://www.omdbapi.com/?t=singin-in-the-rain&apikey=189f17cc",
+  "https://www.omdbapi.com/?t=Inside-Out&apikey=189f17cc",
+  "https://www.omdbapi.com/?t=Goonies&apikey=189f17cc",
+]
+//same for sad movies
+var sadMovieArray = []
 
-var movieUrl = "http://www.omdbapi.com/?i=tt3896198&apikey=189f17cc"
 
+function renderHappy(){
+  var movieUrl = genNextMovie(happyMoviesArray)
+  fetchMovie(movieUrl)
+}
+//do same for sad
+function renderSad(){
+  var movieUrl = genNextMovie(sadMovieArray)
+}
 
+// var movieUrl = "http://www.omdbapi.com/?i=tt3896198&apikey=189f17cc"
+
+//function calls fetch
+//random link by index
+function fetchMovie(movieUrl){
 fetch (movieUrl, {
 
   cache: 'reload',
@@ -26,6 +53,8 @@ fetch (movieUrl, {
 document.querySelector("#movie-release-date").textContent = movieReleaseDate
 
   });
+}
+
 // google books API only searching The Outsiders, change to wider range at later time
 //because google API only goes by Volume ID its best to pivot to a local array of "happy" or "sad" books
 
@@ -1048,16 +1077,6 @@ var sadBooksArray = [
 ];
 //end of books array
 
-//for loop for happyBooksArray
-for (let i = 0; i< happyBooksArray.length; i++) {
-const element = happyBooksArray[i];
-  
-}//for loop for sadBooksArray
-for (let i = 0; i < sadBooksArray.length; i++) {
-  const element = sadBooksArray[i];
-  
-}
-
 
 
 
@@ -1118,18 +1137,45 @@ document.querySelector("#mix-image").setAttribute("src", mixImage);
 // var happyMixNames = data.data[0]
 // })
 
-//for loop for sad mix
-for (sadMix[0] = 0; i < sadMix.length; sadMix) {
-  document.write(
-      sadMix.sadMixName + "<br />"+ sadMix.mixLink + "<br />" + sadMix.mixImage
-  );
-}
-//for loop for happy mix
-for (let i = 0; i < happyMix.length; i++) {
-  const element = happyMix[i];
-  
-}
 
 //happy sad button functionality
+$("#happyBtn").on("click", {
+  renderHappy()
+});
+$("#sadBtn").on("click");
 
+
+//functions to cycle options on click of button
+function genNextMovie(array){
+  const randomNum = Math.floor(Math.random()*array.length)
+  return array[randomNum];
+}
+// function genRandomHappyBook(params){
+// //for loop for happyBooksArray
+// for (let i = 0; i< happyBooksArray.length; i++) {
+//   const element = happyBooksArray[i];
+    
+//   }
+// }
+// function genRandomSadBook(params){
+// //for loop for sadBooksArray
+// for (let i = 0; i < sadBooksArray.length; i++) {
+//   const element = sadBooksArray[i];
+  
+// }
+// }
+// function genHappyMix(params){
+// //for loop for happy mix
+// for (let i = 0; i < happyMix.length; i++) {
+//   const element = happyMix[i];
+  
+// }
+// }
+// function genSadMix(params) {
+//  //for loop for sad mix
+// for (let i = 0; i < sadMix.length; i++) {
+//   const element = sadMix[i];
+  
+// }
+// }
 
