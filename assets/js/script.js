@@ -1,7 +1,4 @@
-//omdb movie links. add key 
-//change url after variables are established
-//this link is only to one movie but with data function having all listed vars, pulling from all will be as easy as pullign from one
-//happy movies array using API links(Praying it wokrs)
+//happy movies array using Omdb API links(Praying it wokrs)(edit:Thanks Bryan)
 var happyMoviesArray = [
   "https://www.omdbapi.com/?t=Little-Miss-Sunshine&apikey=189f17cc",
   "https://www.omdbapi.com/?t=Love-Actually&apikey=189f17cc",
@@ -15,7 +12,7 @@ var happyMoviesArray = [
   "https://www.omdbapi.com/?t=Goonies&apikey=189f17cc",
 ]
 //same for sad movies
-var sadMovieArray = [
+var sadMoviesArray = [
   "https://www.omdbapi.com/?t=Requiem-for-a-Dream&apikey=189f17cc",
   "https://www.omdbapi.com/?t=Sophie%27s-Choice&apikey=189f17cc",
   "https://www.omdbapi.com/?t=Schindler%27s-List&apikey=189f17cc",
@@ -27,12 +24,9 @@ var sadMovieArray = [
   "https://www.omdbapi.com/?t=Titanic&apikey=189f17cc",
   "https://www.omdbapi.com/?t=The%20Notebook&apikey=189f17cc",
 ]
-// var movieUrl = "http://www.omdbapi.com/?i=tt3896198&apikey=189f17cc"
-
-//function calls fetch
-//random link by index
-function fetchMovie(movieUrl){
-fetch (movieUrl, {
+//fetch function for happy/sad movies
+function fetchHappyMovie(happyMoviesArray){
+fetch (happyMoviesArray, {
 
   cache: 'reload',
 })
@@ -41,24 +35,42 @@ fetch (movieUrl, {
   })
   .then(function (data) {
     console.log(data);
-    var movieName = data.Title;
-    document.querySelector('#movie-title').textContent = movieName
+    var happyMovieName = data.Title;
+    document.querySelector('#happymovie-title').textContent = happyMovieName;
     // var movieGenre = data.Genre;
     // document.querySelector('#movie-genre').textContent = movieGenre;
-    var moviePoster = data.Poster;
-    document.querySelector('#movie-poster').setAttribute("src", moviePoster);
-    var moviePlot =data.Plot;
-    document.querySelector('#movie-plot').textContent = moviePlot
-    var movieReleaseDate = data.Released;
-document.querySelector("#movie-release-date").textContent = movieReleaseDate
+    var happyMoviePoster = data.Poster;
+    document.querySelector('#movie-poster').setAttribute("src", happyMoviePoster);
+    var happyMoviePlot =data.Plot;
+    document.querySelector('#movie-plot').textContent = happyMoviePlot;
+    var happyMovieReleaseDate = data.Released;
+document.querySelector("#movie-release-date").textContent = happyMovieReleaseDate;
 
   });
 }
-
-// google books API only searching The Outsiders, change to wider range at later time
-//because google API only goes by Volume ID its best to pivot to a local array of "happy" or "sad" books
-
-//insert array of books 50 being happy other 50 being sad.
+//fetch function for sad Movies
+function fetchSadMovie(sadMoviesArray){
+  fetch (sadMoviesArray, {
+  
+    cache: 'reload',
+  })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+      var sadMovieName = data.Title;
+      document.querySelector('#sadmovie-title').textContent = sadMovieName;
+      var sadMoviePoster = data.Poster;
+      document.querySelector('#sadmovie-poster').setAttribute("src", sadMoviePoster);
+      var sadMoviePlot =data.Plot;
+      document.querySelector('#sadmovie-plot').textContent = sadMoviePlot;
+      var sadMovieReleaseDate = data.Released;
+  document.querySelector("#sadmovie-release-date").textContent = sadMovieReleaseDate;
+  
+    });
+  }
+//books array
 var happyBooksArray = [
   "https://www.googleapis.com/books/v1/volumes?q=A%20Tree%20Grows%20in%20Brooklyn",
   "https://www.googleapis.com/books/v1/volumes?q=The%20Help",
@@ -67,25 +79,56 @@ var happyBooksArray = [
   "https://www.googleapis.com/books/v1/volumes?q=Bournemouth%20Boys%20and%20Boscombe%20Girls",
   "https://www.googleapis.com/books/v1/volumes?q=Bossypants",
   "https://www.googleapis.com/books/v1/volumes?q=The%20Garden",
-  ""
+  "https://www.googleapis.com/books/v1/volumes?q=The%20Rainbow%20Bridge:%20Bridge%20to%20Inner%20Peace%20and%20to%20World%20Peace",
+  "https://www.googleapis.com/books/v1/volumes?q=50%20Shades%20of%20Yay:%20Great%20Thinkers%20on%20Happiness",
+  "https://www.googleapis.com/books/v1/volumes?q=Definitely%20Cool",
+]
+var sadBooksArray = [
+  "https://www.googleapis.com/books/v1/volumes?q=The%20Fault%20in%20Our%20Stars",
+  "https://www.googleapis.com/books/v1/volumes?q=Ugly%20Love",
+  "https://www.googleapis.com/books/v1/volumes?q=Archer%27s%20Voice",
+  "https://www.googleapis.com/books/v1/volumes?q=The%20Sea%20of%20Tranquility",
+  "https://www.googleapis.com/books/v1/volumes?q=The%20Book%20Thief",
+  "https://www.googleapis.com/books/v1/volumes?q=Unlit%20Star",
+  "https://www.googleapis.com/books/v1/volumes?q=Forbidden",
+  "https://www.googleapis.com/books/v1/volumes?q=A%20Thousand%20Boy%20Kisses",
+  "https://www.googleapis.com/books/v1/volumes?q=Making%20Faces",
+  "https://www.googleapis.com/books/v1/volumes?q=Confess",
+
 ]
 //end of books array
-//book fetch request set up
-var booksURL= "https://www.googleapis.com/books/v1/volumes?q=katamari"
 
-fetch(booksURL, {
+//book function that is fetch request templates
+function fetchHappyBook(happyBooksArray)
+fetch(happyBooksArray, {
     cache: "reload",
 })
 .then(function (response) {
     return response.json();
   })
 .then(function (data) {
-var bookName = data.items[0].volumeInfo.title;
-document.querySelector("#book-name").textContent = bookName;
-var bookPlot = data.items[5].volumeInfo.description;
-document.querySelector("#book-plot").textContent = bookPlot;
-var bookImage = data.items[0].volumeInfo.imageLinks.thumbnail;
-document.querySelector("#book-img").setAttribute("src", bookImage)
+var happyBookName = data.items[0].volumeInfo.title;
+document.querySelector("#happybook-name").textContent = happyBookName;
+var happyBookPlot = data.items[5].volumeInfo.description;
+document.querySelector("#happybook-plot").textContent = happyBookPlot;
+var happyBookImage = data.items[0].volumeInfo.imageLinks.thumbnail;
+document.querySelector("#happybook-img").setAttribute("src", happyBookImage)
+})
+//fetch function
+function fetchSadBook(sadBooksArray)
+fetch(sadBooksArray, {
+    cache: "reload",
+})
+.then(function (response) {
+    return response.json();
+  })
+.then(function (data) {
+var sadBookName = data.items[0].volumeInfo.title;
+document.querySelector("#sadbook-name").textContent = sadBookName;
+var sadBookPlot = data.items[5].volumeInfo.description;
+document.querySelector("#sadbook-plot").textContent = sadBookPlot;
+var sadBookImage = data.items[0].volumeInfo.imageLinks.thumbnail;
+document.querySelector("#sadbook-img").setAttribute("src", sadBookImage)
 })
 
 //Mixcloud "Sad" API search
@@ -101,8 +144,6 @@ var sadMixArray = [
   "https://api.mixcloud.com/search/?q=unhinged&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA",
   "https://api.mixcloud.com/search/?q=crying&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA"
 ]
-
-
 // var sadMix = "https:api.mixcloud.com/search/?q=sad-all&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA";
 function fetchSadMix(sadMixArray){
 fetch(sadMixArray, {
@@ -153,10 +194,12 @@ var happyMixImage = data.data[0].pictures.large;
 document.querySelector("#happymix-image").setAttribute("src", happyMixImage);
 })
 }
+//function to randomize choice
 function genNext(array){
   const randomNum = Math.floor(Math.random()*array.length)
   return array[randomNum];
 }
+//render happy options of books mixes and movies 
 function renderHappy(){
   var happyMix = genNext(happyMixArray); 
   fetchHappyMix(happyMix);
@@ -165,6 +208,7 @@ function renderHappy(){
   var happyBooks= genNext(happyBooksArray)
   fetchHappyBook(happyBooks);
 }
+//render sad options of books mixes and movies
 function renderSad(){
   var sadMix = genNext(sadMixArray);
   fetchSadMix(sadMix);
