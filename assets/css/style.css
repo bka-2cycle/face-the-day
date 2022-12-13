@@ -1,6 +1,10 @@
 /* Universal Selector */
 
-* {
+* {  margin: 0;
+  padding: 0;
+  font-family: "Alegreya Sans", sans-serif, "Shadows Into Light", cursive;
+}
+
     margin: 0;
     padding: 0;
     font-family: "Alegreya Sans", sans-serif, "Shadows Into Light", cursive;
@@ -11,11 +15,12 @@
   /* declaring variables */
   :root {
     --bs-dark-rgb: #000000;
-    --dark: #000000;
     --light: #fff;
     --red: #ec0239;
     --radius: 50px;
     --center: center;
+    --dark: #13293d;
+    --light: #fff;
   }
 
   .rounded {
@@ -25,12 +30,9 @@
     min-width: 360px;
 }
 
-
   .py-5 {
     padding-top: 0rem!important;
   }
-  
-
 
 .button-smile {
   background-size: 200px 228px;
@@ -44,8 +46,6 @@
   background-image: url(../../images/btn-sml-2.png);
   background-repeat: no-repeat;
 }
-
-
 
 .button-frown {
   background-size: 200px 228px;
@@ -111,7 +111,6 @@
     margin-top: 40px;
     margin-bottom: 10px;
   }
-
   
   /* Media Queries */
   
