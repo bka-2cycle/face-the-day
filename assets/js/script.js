@@ -1,3 +1,4 @@
+
 //omdb movie links. add key 
 //change url after variables are established
 //this link is only to one movie but with data function having all listed vars, pulling from all will be as easy as pullign from one
