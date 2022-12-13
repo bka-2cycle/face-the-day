@@ -1,0 +1,127 @@
+/* Universal Selector */
+
+* {  margin: 0;
+  padding: 0;
+  font-family: "Alegreya Sans", sans-serif, "Shadows Into Light", cursive;
+}
+
+    margin: 0;
+    padding: 0;
+    font-family: "Alegreya Sans", sans-serif, "Shadows Into Light", cursive;
+    background-color: var(--dark);
+  }
+  
+  
+  /* declaring variables */
+  :root {
+    --bs-dark-rgb: #000000;
+    --light: #fff;
+    --red: #ec0239;
+    --radius: 50px;
+    --center: center;
+    --dark: #13293d;
+    --light: #fff;
+  }
+
+  .rounded {
+    border-top: 2px solid var(--light);
+    border-radius: 5px;
+    margin-top: -0px;
+    min-width: 360px;
+}
+
+  .py-5 {
+    padding-top: 0rem!important;
+  }
+
+.button-smile {
+  background-size: 200px 228px;
+  width: 200px;
+  height: 228px;
+  background-image: url(../../images/btn-sml.png);
+  background-repeat: no-repeat;
+}
+
+.button-smile:hover {
+  background-image: url(../../images/btn-sml-2.png);
+  background-repeat: no-repeat;
+}
+
+.button-frown {
+  background-size: 200px 228px;
+  width: 200px;
+  height: 228px;
+  background-image: url(../../images/btn-sad.png);
+  background-repeat: no-repeat;
+}
+
+.button-frown:hover {
+  background-image: url(../../images/btn-sad-2.png);
+  background-repeat: no-repeat;
+}
+
+
+.btn-check:focus+.btn, .btn:focus {
+  outline: 0;
+  box-shadow:none !important
+}
+
+.card {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+
+  /* ID Selectors */
+
+  #movies, #songs, #books {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #000000; 
+  }
+  
+  /* Class Selectors */
+
+  .app-logo {
+   width: 100%;
+  }
+
+
+  .happy-button {
+    width: 200px;
+  } 
+  
+
+   .sad-button {
+    width: 200px;
+    /*margin-left: 100px;*/
+  }
+
+  .on-my-way-button {
+    max-width: 400px;
+    /*width: 100%;*/
+    margin-top: 50px;
+    margin-bottom: 30px;
+  }
+
+  .try-again-button {
+    max-width: 400px;
+    /*width: 100%;*/
+    margin-top: 40px;
+    margin-bottom: 10px;
+  }
+  
+  /* Media Queries */
+  
+  /* Tablets */
+  @media screen and (max-width: 992px) {
+  }
+  
+  /* Large smartphones */
+  @media screen and (max-width: 768px) {
+  }
+  
+  /* Small smartphones */
+  @media screen and (max-width: 576px) {
+  }
