@@ -1,4 +1,3 @@
-
 //omdb movie links. add key 
 //change url after variables are established
 //this link is only to one movie but with data function having all listed vars, pulling from all will be as easy as pullign from one
@@ -2052,3 +2051,17 @@ $.ajax({
     console.error("Error: ", jqXHR.responseText);
   },
 });
+//Joke API
+var limit = 3
+$.ajax({
+    method: 'GET',
+    url: 'https://api.api-ninjas.com/v1/jokes?limit=1', /*+ limit,*/
+    headers: { 'X-Api-Key': 'Zx/7z3+LnT83tllYBTvk+A==t3oKjDpCz5DD8Tyw'},
+    contentType: 'application/json',
+    success: function(result) {
+        console.log(result);
+        document.querySelector('#random-joke').textContent = result[0].joke;
+    }
+
+});
+
