@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -60,18 +61,17 @@
 
         </header>
 
-        <main>
+        <main class="results-page-hidden" id="test">
 
-          <!-- div for sad text results -->
-          <div class="d-grid gap-2" id="sad-result-text">
-            <p class="fs-5 mb-4 text-white">Feeling down, here's a movie, book and song<br>that is sure to keep you
-              blue.</p>
+          <div class="d-grid gap-2 sad-result-text" id="sad-result-txt">
+            <p class="fs-5 mb-4 text-white">
+              <span class="good-txt" id="goodtext">Feeling happy, here's a movie, book and song<br>that is sure to keep
+                your spirits up.</span>
+              <span class="bad-txt" id="badtext">Feeling down, here's a movie, book and song<br>that is sure to keep you
+                blue.</span>
+            </p>
           </div>
 
-          <!-- div for happy text results -->
-          <!--<div class="d-grid gap-2" id="sad-result-text">
-            <p class="fs-5 mb-4 text-white">Feeling down, here's a movie, book and song<br>that is sure to keep you blue.</p>
-          </div>-->
 
 
           <!-- Movie, Song, Book display cards -->
@@ -159,16 +159,18 @@
             </div>
           </div>
 
+
+          <!-- try again, refresh button-->
+          <div class="d-grid gap-2">
+            <button type="button" class="button-reload btn">
+              <div id="button-again"><img class="try-again-button" src="./images/try-again-btn.png"></div>
+            </button>
+          </div>
+
         </main>
 
 
-        <!-- try again, refresh button-->
 
-        <div class="d-grid gap-2">
-          <button type="button" class="button-results btn">
-            <div id="button-again"><img class="try-again-button" src="./images/try-again-btn.png"></div>
-          </button>
-        </div>
 
       </div>
     </div>
@@ -189,7 +191,8 @@
     integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous" />
 
   <!-- JQuery UI Link-->
-  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+  <script src="https://code.jquery.com/jquery-3.6.2.min.js"
+    integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
 
   <!-- Day JS link -->
   <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
@@ -207,4 +210,3 @@
 </body>
 
 </html>
-

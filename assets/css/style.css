@@ -1,38 +1,59 @@
 /* Universal Selector */
 
-* {  margin: 0;
+* {
+  margin: 0;
   padding: 0;
   font-family: "Alegreya Sans", sans-serif, "Shadows Into Light", cursive;
+  background-color: var(--bs-dark-rgb);
 }
 
-    margin: 0;
-    padding: 0;
-    font-family: "Alegreya Sans", sans-serif, "Shadows Into Light", cursive;
-    background-color: var(--dark);
-  }
-  
-  
-  /* declaring variables */
-  :root {
-    --bs-dark-rgb: #000000;
-    --light: #fff;
-    --red: #ec0239;
-    --radius: 50px;
-    --center: center;
-    --dark: #13293d;
-    --light: #fff;
-  }
 
-  .rounded {
-    border-top: 2px solid var(--light);
-    border-radius: 5px;
-    margin-top: -0px;
-    min-width: 360px;
+/* declaring variables */
+:root {
+  --bs-dark-rgb: #000000;
+  --light: #fff;
+  --red: #ec0239;
+  --radius: 50px;
+  --center: center;
+  --dark: #13293d;
+  --light: #fff;
 }
 
-  .py-5 {
-    padding-top: 0rem!important;
-  }
+.rounded {
+  border-top: 2px solid var(--light);
+  border-radius: 5px;
+  margin-top: -0px;
+  min-width: 360px;
+}
+
+
+/* ID Selectors */
+
+#movies,
+#songs,
+#books {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #000000;
+}
+
+
+#sad-result-text {
+  display: none;
+  visibility: hidden;
+}
+
+#happy-result-text {
+  display: none;
+  visibility: hidden;
+}
+
+/* Class Selectors */
+
+.py-5 {
+  padding-top: 0rem !important;
+}
 
 .button-smile {
   background-size: 200px 228px;
@@ -61,9 +82,10 @@
 }
 
 
-.btn-check:focus+.btn, .btn:focus {
+.btn-check:focus+.btn,
+.btn:focus {
   outline: 0;
-  box-shadow:none !important
+  box-shadow: none !important
 }
 
 .card {
@@ -71,57 +93,58 @@
   margin-bottom: 20px;
 }
 
+.app-logo {
+  width: 100%;
+}
 
-  /* ID Selectors */
+.results-page-hidden {
+  display: none;
+}
 
-  #movies, #songs, #books {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #000000; 
-  }
-  
-  /* Class Selectors */
+.results-page-shown {
+  display: block;
+}
 
-  .app-logo {
-   width: 100%;
-  }
+.good-txt {
+  display: none;
+  /*visibility: hidden;*/
+}
 
+.bad-txt {
+  display: none;
+  /*visibility: hidden;*/
+}
 
-  .happy-button {
-    width: 200px;
-  } 
-  
+.happy-button {
+  width: 200px;
+}
 
-   .sad-button {
-    width: 200px;
-    /*margin-left: 100px;*/
-  }
+.sad-button {
+  width: 200px;
+  /*margin-left: 100px;*/
+}
 
-  .on-my-way-button {
-    max-width: 400px;
-    /*width: 100%;*/
-    margin-top: 50px;
-    margin-bottom: 30px;
-  }
+.on-my-way-button {
+  max-width: 400px;
+  /*width: 100%;*/
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
 
-  .try-again-button {
-    max-width: 400px;
-    /*width: 100%;*/
-    margin-top: 40px;
-    margin-bottom: 10px;
-  }
-  
-  /* Media Queries */
-  
-  /* Tablets */
-  @media screen and (max-width: 992px) {
-  }
-  
-  /* Large smartphones */
-  @media screen and (max-width: 768px) {
-  }
-  
-  /* Small smartphones */
-  @media screen and (max-width: 576px) {
-  }
+.try-again-button {
+  max-width: 400px;
+  /*width: 100%;*/
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+
+/* Media Queries */
+
+/* Tablets */
+@media screen and (max-width: 992px) {}
+
+/* Large smartphones */
+@media screen and (max-width: 768px) {}
+
+/* Small smartphones */
+@media screen and (max-width: 576px) {}
