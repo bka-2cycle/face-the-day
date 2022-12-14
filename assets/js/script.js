@@ -25,6 +25,7 @@ var againBtn = $('#button-again');
 
 //Event Listener Variable
 var buttonResults = $('.button-results');
+var closeModal = $('#closeModal');
 
 //Array Start
 //Movie Arrays
@@ -352,9 +353,14 @@ buttonResults.on('click', function () {
     document.getElementById("test").classList.add('results-page-shown');
     document.getElementById("test").classList.remove('results-page-hidden');
   } else {
-    alert("You Must Choose Happy or Sad First");
+    $('#myModal').modal('show');
     return;
   }
+});
+
+//Modal Event Listener Closing Button
+closeModal.on('click', function() {
+  $('#myModal').modal('hide');
 });
 
 //Static APIs

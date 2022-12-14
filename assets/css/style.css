@@ -115,6 +115,16 @@ h2 {
   width: 100%;
 }
 
+ .modal-dialog, .modal-header, .modal-title, .modal-body, .modal-footer, .modal-text {
+  background-color: #fff;
+}
+
+
+
+.close, .x-button {
+  background-color: darkgrey;
+}
+
 .results-page-hidden {
   display: none;
 }
