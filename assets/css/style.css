@@ -77,27 +77,27 @@ h2 {
   background-size: 200px 228px;
   width: 200px;
   height: 228px;
-  background-image: url(../../images/btn-sml.png);
-  background-repeat: no-repeat;
+  /* background-image: url(../../images/btn-sml.png);
+  background-repeat: no-repeat; */
 }
 
-.button-smile:hover {
+/* .button-smile:hover {
   background-image: url(../../images/btn-sml-2.png);
   background-repeat: no-repeat;
-}
+} */
 
 .button-frown {
   background-size: 200px 228px;
   width: 200px;
   height: 228px;
-  background-image: url(../../images/btn-sad.png);
-  background-repeat: no-repeat;
+  /* background-image: url(../../images/btn-sad.png);
+  background-repeat: no-repeat; */
 }
 
-.button-frown:hover {
+/* .button-frown:hover {
   background-image: url(../../images/btn-sad-2.png);
   background-repeat: no-repeat;
-}
+} */
 
 
 .btn-check:focus+.btn,

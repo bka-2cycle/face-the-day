@@ -319,20 +319,24 @@ function getHappyMix() {
   });
 };
 
-//Event Listener Functions
-//Event Listener Happy Button
+//Event Listener Functions 
+//Event Listener Happy Button      "document.getElementById('smile-alt').src='../../images/btn-sml-2.png'"
 buttonHappy.on('click', function () {
+    document.getElementById('smile-alt').src='./images/btn-sml-2.png'
   isHappy = true;
   isSad = false;
+  
   if (isHappy = true) {
     document.getElementById("goodtext").classList.remove('good-txt');
     console.log("happy button is pushed!!!!!");
   }
 });
-//Event Listener Sad Button
+//Event Listener Sad Button     "document.getElementById('frown-alt').src='./images/btn-sad-2.png'"
 buttonSad.on('click', function () {
+    document.getElementById('frown-alt').src='./images/btn-sad-2.png'
   isHappy = false;
   isSad = true;
+  
   if (isSad = true) {
     document.getElementById("badtext").classList.remove('bad-txt');
     console.log("sad button is pushed!!!!!");
@@ -352,6 +356,8 @@ buttonResults.on('click', function () {
     getHappyMix();
     document.getElementById("test").classList.add('results-page-shown');
     document.getElementById("test").classList.remove('results-page-hidden');
+  } else if (isHappy === true && isSad === true) {
+    $('#myModal').modal('show');
   } else {
     $('#myModal').modal('show');
     return;
