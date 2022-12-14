@@ -51,6 +51,7 @@
 
 /* Class Selectors */
 
+
 .py-5 {
   padding-top: 0rem !important;
 }
@@ -145,6 +146,7 @@
 
 /* Large smartphones */
 @media screen and (max-width: 768px) {}
+
 
 /* Small smartphones */
 @media screen and (max-width: 576px) {}

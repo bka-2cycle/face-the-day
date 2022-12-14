@@ -61,7 +61,9 @@
 
         </header>
 
+
         <main class="results-page-hidden" id="test">
+
 
           <div class="d-grid gap-2 sad-result-text" id="sad-result-txt">
             <p class="fs-5 mb-4 text-white">
@@ -135,8 +137,7 @@
               This day in history
             </div>
             <div class="card-body">
-              <h5 class="card-title">What happened </h5>
-              <p class="card-text">Memory snippet</p>
+              <h5 id="event-history" class="card-title">What happened </h5>
             </div>
           </div>
 
@@ -145,17 +146,17 @@
               Quote of the day
             </div>
             <div class="card-body">
-              <h5 class="card-title">Quote</h5>
-              <p class="text-muted"> — Author's name</p>
+              <h5 id="notable-quotes" class="card-title"></h5>
+              <p id="notable-author" class="text-muted"></p>
             </div>
           </div>
 
           <div class="card text-center">
             <div class="card-header">
-              Joke of the day
+              Joke of the Day
             </div>
             <div class="card-body">
-              <h5 class="card-title">Joke</h5>
+              <h5 id="random-joke" class="card-title"></h5>
             </div>
           </div>
 
@@ -168,6 +169,7 @@
           </div>
 
         </main>
+
 
 
 
@@ -187,8 +189,7 @@
     crossorigin="anonymous"></script>
 
   <!-- JQuery link -->
-  <link src="https://code.jquery.com/jquery-3.6.1.min.js"
-    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous" />
+  <script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
 
   <!-- JQuery UI Link-->
   <script src="https://code.jquery.com/jquery-3.6.2.min.js"

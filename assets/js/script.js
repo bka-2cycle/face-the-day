@@ -1,4 +1,9 @@
+
+var resultsPage = $('.results-page-hidden');
+
+
 //happy movies array using Omdb API links(Praying it wokrs)(edit:Thanks Bryan)
+
 var happyMoviesArray = [
   "https://www.omdbapi.com/?t=Little-Miss-Sunshine&apikey=189f17cc",
   "https://www.omdbapi.com/?t=Love-Actually&apikey=189f17cc",
@@ -230,9 +235,7 @@ function renderSad(){
   fetchSadBook(sadBooks);
 
 }
-//happy sad button functionality
-$("#happyBtn").on("click", function() {
-  renderHappy()
+
 });
 $("#sadBtn").on("click", function(){
   renderSad()
@@ -332,3 +335,14 @@ $.ajax({
 
 });
 
+
+var againBtn = $('#button-again');
+function startOver() {
+  againBtn.click(function() {
+    preventDefault();
+    resultsPage.classList.add('results-page-hidden');
+    resultsPage.classList.remove('results-page-shown');
+  }
+)};
+
+startOver();
