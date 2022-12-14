@@ -20,6 +20,7 @@
 
 h2 {
   color: #fc6a09;
+  margin-top: 60px;
 }
 
 /* ID Selectors */
@@ -51,6 +52,8 @@ h2 {
   border-radius: 5px;
   margin-top: -0px;
   min-width: 360px;
+  width: 60%;
+  margin: auto;
 }
 
 .card-header {
