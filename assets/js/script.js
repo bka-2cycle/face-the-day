@@ -361,6 +361,7 @@ buttonResults.on('click', function () {
 //Modal Event Listener Closing Button
 closeModal.on('click', function() {
   $('#myModal').modal('hide');
+  location.reload();
 });
 
 //Static APIs
