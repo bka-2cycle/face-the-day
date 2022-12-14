@@ -2,7 +2,7 @@
 
 ## Description
 
-This app helps you face the day: by populating movies, songs, and books based on your mood, and providing fun facts like what happened this day in history, a joke, and a quote to jump start the day.
+This app helps you face your day by populating movies, songs, and books based on your mood. As a bonus, it’ll provide you with a funny joke, a notable quote, and what happened this day in history — to help you face your day.
 
 ## Table of Contents
 
@@ -17,11 +17,21 @@ Go to [app page](https://bka-2cycle.github.io/face-the-day) and follow the promp
 
 ## Usage
 
-Start by choosing a "Happy" or "Sad" mood, then click on "Get Me On My Way" button to get through the prompts as shown below:
+Start by choosing a "Happy" or "Sad" mood, then click on "Get Me On My Way!" button to go through the prompts as shown below:
 
-![Application](./assets/images/Screen%20Shot%202022-12-10%20at%203.44.08%20PM.png)
+![Application intro](./assets/images/app_1.png)
 
-If you don't like your results try the "Mood Swing" button to restart the app, and generate new results.
+If you don't choose a mood a prompt will remind you to select "Happy" or "Sad" to continue
+
+![Prompt for mood choice](./assets/images/app_2.png)
+
+Based on your mood you'll get a movie, song and book suggestions
+
+![Mood suggestions](./assets/images/app_3.jpg)
+
+Regardless of your mood, you'll get what happened this day in history, a quote of the day, and a joke of the day. If you don't like your results try the "Mood Swing, Try Again" button to restart the app, and generate new results!
+
+![Application restart button](./assets/images/app_4.png)
 
 ## Credits
 
