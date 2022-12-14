@@ -4,10 +4,7 @@
   margin: 0;
   padding: 0;
   font-family: "Alegreya Sans", sans-serif, "Shadows Into Light", cursive;
-  margin: 0;
-  padding: 0;
-  font-family: "Alegreya Sans", sans-serif, "Shadows Into Light", cursive;
-  background-color: var(--dark);
+  background-color: var(--bs-dark-rgb);
 }
 
 
@@ -28,6 +25,32 @@
   margin-top: -0px;
   min-width: 360px;
 }
+
+
+/* ID Selectors */
+
+#movies,
+#songs,
+#books {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #000000;
+}
+
+
+#sad-result-text {
+  display: none;
+  visibility: hidden;
+}
+
+#happy-result-text {
+  display: none;
+  visibility: hidden;
+}
+
+/* Class Selectors */
+
 
 .py-5 {
   padding-top: 0rem !important;
@@ -71,29 +94,31 @@
   margin-bottom: 20px;
 }
 
-
-/* ID Selectors */
-
-#movies,
-#songs,
-#books {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: #000000;
-}
-
-/* Class Selectors */
-
 .app-logo {
   width: 100%;
 }
 
+.results-page-hidden {
+  display: none;
+}
+
+.results-page-shown {
+  display: block;
+}
+
+.good-txt {
+  display: none;
+  /*visibility: hidden;*/
+}
+
+.bad-txt {
+  display: none;
+  /*visibility: hidden;*/
+}
 
 .happy-button {
   width: 200px;
 }
-
 
 .sad-button {
   width: 200px;
@@ -114,15 +139,6 @@
   margin-bottom: 10px;
 }
 
-.results-page-hidden {
-  visibility: hidden;
-}
-
-.results-page-shown {
-  visibility: visible;
-  display: block;
-}
-
 /* Media Queries */
 
 /* Tablets */
@@ -130,6 +146,7 @@
 
 /* Large smartphones */
 @media screen and (max-width: 768px) {}
+
 
 /* Small smartphones */
 @media screen and (max-width: 576px) {}
