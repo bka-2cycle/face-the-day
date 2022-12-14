@@ -177,6 +177,18 @@ var happyMixArray = [
 ]
 
 // var happyMix = "https://api.mixcloud.com/search/?q=happy-vibes&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA"
+
+// fetch(happyMix, {
+//   cache: "reload",
+// })
+// .then(function (response) {
+//   return response.json();
+// })
+// .then(function (data) {
+// console.log(data)
+// var happyMixNames = data.data[0]
+// })
+
 function fetchHappyMix(happyMixArray){
 fetch(happyMixArray, {
   cache: "reload",
@@ -226,6 +238,46 @@ $("#sadBtn").on("click", function(){
   renderSad()
 })
 
+var buttonHappy = $('.button-smile');
+var buttonSad = $('.button-frown');
+
+var isHappy = false;
+var isSad = false;
+
+buttonHappy.on('click', function () {
+    isHappy = true;
+    isSad = false;
+    if (isHappy = true) {
+    document.getElementById("goodtext").classList.remove('good-txt');
+    console.log("happy button is pushed!!!!!");
+    }
+});
+    
+buttonSad.on('click', function () {
+        isHappy = false;
+        isSad = true;
+    if (isSad = true) {
+        document.getElementById("badtext").classList.remove('bad-txt'); 
+        console.log("sad button is pushed!!!!!");
+    }
+});
+
+var resultsPageShow = $('.results-page-shown');
+var resultsPageHidden = $('.results-page-hidden');
+
+ // INCORPORATE LOOP HERE!!! TO SEARCH HAPPY OR SAD ARRAYS
+var buttonResults = $('.button-results');
+buttonResults.on('click', function () {
+if (isSad === true || isHappy === true){
+    document.getElementById("test").classList.add('results-page-shown');
+    document.getElementById("test").classList.remove('results-page-hidden');
+    console.log("results button pushed!!");
+}
+     else {
+        alert("You Must Choose Happy or Sad First"); 
+        return;
+       }
+});
 
 //Notable Quotes
 
