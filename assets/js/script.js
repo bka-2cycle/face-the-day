@@ -1,3 +1,5 @@
+var resultsPage = $('.results-page-hidden');
+
 //omdb movie links. add key 
 //change url after variables are established
 //this link is only to one movie but with data function having all listed vars, pulling from all will be as easy as pullign from one
@@ -1973,7 +1975,7 @@ document.querySelector("#mix-image").setAttribute("src", mixImage);
 
 //happy sad button functionality
 $("#happyBtn").on("click", {
-  renderHappy()
+  // renderHappy()
 });
 $("#sadBtn").on("click");
 
@@ -2065,3 +2067,14 @@ $.ajax({
 
 });
 
+
+var againBtn = $('#button-again');
+function startOver() {
+  againBtn.click(function() {
+    preventDefault();
+    resultsPage.classList.add('results-page-hidden');
+    resultsPage.classList.remove('results-page-shown');
+  }
+)};
+
+startOver();
