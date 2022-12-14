@@ -1,9 +1,33 @@
-
+//Global Variables
+//Display Modification Variable
 var resultsPage = $('.results-page-hidden');
+var resultsPageShow = $('.results-page-shown');
+var resultsPageHidden = $('.results-page-hidden');
 
+//Event Listener Variables      
+var buttonHappy = $('.button-smile');
+var buttonSad = $('.button-frown');
+var isHappy = false;
+var isSad = false;
 
-//happy movies array using Omdb API links(Praying it wokrs)(edit:Thanks Bryan)
+//Music, Books, Movie Variables
+var mixUrl = "https://api.mixcloud.com/search/?q=";
+var bookUrl = "https://www.googleapis.com/books/v1/volumes?q=";
 var movieUrl = "https://www.omdbapi.com/"
+
+// Static API Variables for Time & Count
+var currentDay = parseInt(dayjs().format("DD"));
+var currentMonth = parseInt(dayjs().format("MM"));
+var limit = 3;
+
+// Variable for Start Over Button
+var againBtn = $('#button-again');
+
+//Event Listener Variable
+var buttonResults = $('.button-results');
+
+//Array Start
+//Movie Arrays
 var happyMoviesArray = [
   "?t=Little-Miss-Sunshine&apikey=189f17cc",
   "?t=Love-Actually&apikey=189f17cc",
@@ -16,7 +40,7 @@ var happyMoviesArray = [
   "?t=Inside-Out&apikey=189f17cc",
   "?t=Goonies&apikey=189f17cc",
 ]
-//same for sad movies
+
 var sadMoviesArray = [
   "?t=Requiem-for-a-Dream&apikey=189f17cc",
   "?t=Sophie%27s-Choice&apikey=189f17cc",
@@ -29,254 +53,312 @@ var sadMoviesArray = [
   "?t=Titanic&apikey=189f17cc",
   "?t=The%20Notebook&apikey=189f17cc",
 ]
-function fetchMovieUrl(){
-  fetch(`"${movieUrl}"`+`"?t=${sadMoviesArray[Math.floor(Math.random() * 10)]}"`)
-}
-console.log(movieUrl)
-//fetch function for happy/sad movies
-function fetchHappyMovie(happyMoviesArray){
-fetch (happyMoviesArray[0], {
 
-  cache: 'reload',
-})
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
-    console.log(data);
-    var happyMovieName = data.Title;
-    document.querySelector('#happymovie-title').textContent = happyMovieName;
-    // var movieGenre = data.Genre;
-    // document.querySelector('#movie-genre').textContent = movieGenre;
-    var happyMoviePoster = data.Poster;
-    document.querySelector('#happymovie-poster').setAttribute("src", happyMoviePoster);
-    var happyMoviePlot =data.Plot;
-    document.querySelector('#happymovie-plot').textContent = happyMoviePlot;
-    var happyMovieReleaseDate = data.Released;
-document.querySelector("#happymovie-release-date").textContent = happyMovieReleaseDate;
+//Book Arrays
+var sadBooks = [
+  {
+    Title: 'A Little Life',
+    Author: 'Hanya Yanagihara',
+    Cover: './images/sad-book-img/a-little-life.jpg'
+  },
+  {
+    Title: 'Allegedly',
+    Author: 'Tiffany D Jackson',
+    Cover: './images/sad-book-img/allegedly.jpg'
+  },
+  {
+    Title: 'No Longer Human',
+    Author: 'Osamu Dazai',
+    Cover: './images/sad-book-img/no-longer-human.jpg'
+  },
+  {
+    Title: 'Girl in Pieces',
+    Author: 'Kathleen Gasglow',
+    Cover: './images/sad-book-img/girl-in-pieces.jpg'
+  },
+  {
+    Title: 'Snitch',
+    Author: 'Allison van Diepen',
+    Cover: './images/sad-book-img/snitch.jpg'
+  },
+  {
+    Title: 'This Is Where It Ends',
+    Author: 'Marieke Nijkamp',
+    Cover: './images/sad-book-img/this-is-where-it-ends.jpg'
+  },
+  {
+    Title: 'Things We Never Got Over',
+    Author: 'Lucy Score',
+    Cover: './images/sad-book-img/things-we-never-got-over.jpg'
+  },
+  {
+    Title: 'If He Had Been With Me',
+    Author: 'Laura Nowlin',
+    Cover: './images/sad-book-img/if-he-had-been-there-with-me.jpg'
+  },
+  {
+    Title: 'Obsession',
+    Author: 'Jesse Q Sutanto',
+    Cover: './images/sad-book-img/obsession.jpg'
+  },
+  {
+    Title: 'They Both Die in the End',
+    Author: 'Adam Silvera',
+    Cover: './images/sad-book-img/they-both-die-in-the-end.jpg'
+  },
+  {
+    Title: 'The Silent Patient',
+    Author: 'Alex Michaelides',
+    Cover: './images/sad-book-img/the-silent-patient.jpg'
+  }];
 
-  });
-}
-console.log(happyMoviesArray[""])
-//fetch function for sad Movies
-function fetchSadMovie(sadMoviesArray){
-  fetch (sadMoviesArray, {
-  
-    cache: 'reload',
-  })
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      console.log(data);
-      var sadMovieName = data.Title;
-      document.querySelector('#sadmovie-title').textContent = sadMovieName;
-      var sadMoviePoster = data.Poster;
-      document.querySelector('#sadmovie-poster').setAttribute("src", sadMoviePoster);
-      var sadMoviePlot =data.Plot;
-      document.querySelector('#sadmovie-plot').textContent = sadMoviePlot;
-      var sadMovieReleaseDate = data.Released;
-  document.querySelector("#sadmovie-release-date").textContent = sadMovieReleaseDate;
-  console.log(fetchSadMovie)
-    });
-  }
-//books array
-var happyBooksArray = [
-  "https://www.googleapis.com/books/v1/volumes?q=A%20Tree%20Grows%20in%20Brooklyn",
-  "https://www.googleapis.com/books/v1/volumes?q=The%20Help",
-  "https://www.googleapis.com/books/v1/volumes?q=Lucky%20Go%20Happy:%20Make%20Happiness%20Happen!",
-  "https://www.googleapis.com/books/v1/volumes?q=The%20Ultimate%20Hitchhiker%27s%20Guide%20to%20the%20Galaxy%20(Hitchhiker%27s%20Guide%20to%20the%20Galaxy,%20#1-5)",
-  "https://www.googleapis.com/books/v1/volumes?q=Bournemouth%20Boys%20and%20Boscombe%20Girls",
-  "https://www.googleapis.com/books/v1/volumes?q=Bossypants",
-  "https://www.googleapis.com/books/v1/volumes?q=The%20Garden",
-  "https://www.googleapis.com/books/v1/volumes?q=The%20Rainbow%20Bridge:%20Bridge%20to%20Inner%20Peace%20and%20to%20World%20Peace",
-  "https://www.googleapis.com/books/v1/volumes?q=50%20Shades%20of%20Yay:%20Great%20Thinkers%20on%20Happiness",
-  "https://www.googleapis.com/books/v1/volumes?q=Definitely%20Cool",
-]
-var sadBooksArray = [
-  "https://www.googleapis.com/books/v1/volumes?q=The%20Fault%20in%20Our%20Stars",
-  "https://www.googleapis.com/books/v1/volumes?q=Ugly%20Love",
-  "https://www.googleapis.com/books/v1/volumes?q=Archer%27s%20Voice",
-  "https://www.googleapis.com/books/v1/volumes?q=The%20Sea%20of%20Tranquility",
-  "https://www.googleapis.com/books/v1/volumes?q=The%20Book%20Thief",
-  "https://www.googleapis.com/books/v1/volumes?q=Unlit%20Star",
-  "https://www.googleapis.com/books/v1/volumes?q=Forbidden",
-  "https://www.googleapis.com/books/v1/volumes?q=A%20Thousand%20Boy%20Kisses",
-  "https://www.googleapis.com/books/v1/volumes?q=Making%20Faces",
-  "https://www.googleapis.com/books/v1/volumes?q=Confess",
+var happyBooks = [
+  {
+    Title: 'Remarkably Bright Creatures',
+    Author: 'Shelby Van Pelt',
+    Cover: './images/happy-book-img/remarkable-bright-creatures.jpg'
+  },
+  {
+    Title: 'The Comfort Book',
+    Author: 'Matt Haig',
+    Cover: './images/happy-book-img/the-comfort-book.jpg'
+  },
+  {
+    Title: 'The Midnight Library',
+    Author: 'Matt Haig',
+    Cover: './images/happy-book-img/the-midnight-library.jpg'
+  },
+  {
+    Title: 'The Keeper of Lost Things',
+    Author: 'Ruth Hogan',
+    Cover: './images/happy-book-img/the-keeper-of-lost-things.jpg'
+  },
+  {
+    Title: 'The People We Keep',
+    Author: 'Allison Larkin',
+    Cover: './images/happy-book-img/the-people-we-keep.jpg'
+  },
+  {
+    Title: 'Where the Forest Meets the Stars',
+    Author: 'Glendy Vanderah',
+    Cover: './images/happy-book-img/where-the-forest-meets-the-stars.jpg'
+  },
+  {
+    Title: 'The Land Where Lemons Grow',
+    Author: 'Helena Attlee',
+    Cover: './images/happy-book-img/the-land-where-lemons-grow.jpg'
+  },
+  {
+    Title: 'How High We Go In the Dark',
+    Author: 'Sequoia Nagamatsu',
+    Cover: './images/happy-book-img/how-high-we-go-in-the-dark.jpg'
+  },
+  {
+    Title: 'In Five Years',
+    Author: 'Rebecca Serle',
+    Cover: './images/happy-book-img/in-five-years.jpg'
+  },
+  {
+    Title: 'Ikigai',
+    Author: 'Hector Garcia',
+    Cover: './images/happy-book-img/ikigai.jpg'
+  },
+  {
+    Title: 'Crying in H Mart',
+    Author: 'Michelle Zauner',
+    Cover: './images/happy-book-img/crying-in-h-mart.jpg'
+  }];
 
-]
-//end of books array
 
-//book function that is fetch request templates
-function fetchHappyBook(happyBooksArray) {
-fetch(happyBooksArray, {
-    cache: "reload",
-})
-.then(function (response) {
-    return response.json();
-  })
-.then(function (data) {
-var happyBookName = data.items[0].volumeInfo.title;
-document.querySelector("#happybook-name").textContent = happyBookName;
-var happyBookPlot = data.items[0].volumeInfo.description;
-document.querySelector("#happybook-plot").textContent = happyBookPlot;
-var happyBookImage = data.items[0].volumeInfo.imageLinks.thumbnail;
-document.querySelector("#happybook-img").setAttribute("src", happyBookImage)
-})
-}
-//fetch function
-function fetchSadBook(sadBooksArray) {
-fetch(sadBooksArray, {
-    cache: "reload",
-})
-.then(function (response) {
-    return response.json();
-  })
-.then(function (data) {
-var sadBookName = data.items[0].volumeInfo.title;
-document.querySelector("#sadbook-name").textContent = sadBookName;
-var sadBookPlot = data.items[5].volumeInfo.description;
-document.querySelector("#sadbook-plot").textContent = sadBookPlot;
-var sadBookImage = data.items[0].volumeInfo.imageLinks.thumbnail;
-document.querySelector("#sadbook-img").setAttribute("src", sadBookImage)
-})
-}
-//Mixcloud "Sad" API search
+//Music Array
 var sadMixArray = [
-  "https://api.mixcloud.com/search/?q=sad&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA",
-  "https://api.mixcloud.com/search/?q=really-upset&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA",
-  "https://api.mixcloud.com/search/?q=heartbroken&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA",
-  "https://api.mixcloud.com/search/?q=miserable&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA",
-  "https://api.mixcloud.com/search/?q=sorrow&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA",
-  "https://api.mixcloud.com/search/?q=melancholy&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA",
-  "https://api.mixcloud.com/search/?q=saddened&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA",
-  "https://api.mixcloud.com/search/?q=gloomy&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA",
-  "https://api.mixcloud.com/search/?q=unhinged&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA",
-  "https://api.mixcloud.com/search/?q=crying&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA"
+  "sad&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA",
+  "really-upset&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA",
+  "heartbroken&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA",
+  "miserable&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA",
+  "sorrow&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA",
+  "melancholy&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA",
+  "saddened&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA",
+  "gloomy&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA",
+  "unhinged&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA",
+  "crying&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA"
 ]
-// var sadMix = "https:api.mixcloud.com/search/?q=sad-all&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA";
-function fetchSadMix(sadMixArray){
-fetch(sadMixArray, {
-  cache: "reload",
-})
-.then(function (response) {
-  return response.json();
-})
-.then(function (data) {
-console.log (data.data[0]);
-var sadMixName = data.data[0].name;
-document.querySelector("#sadmix-name").textContent = sadMixName;
-var mixLink = data.data[0].url;
-document.querySelector("#sadmix-link").setAttribute("href", mixLink);
-var mixImage = data.data[0].pictures.large; 
-document.querySelector("#sadmix-image").setAttribute("src", mixImage);
-})
-}
-//happy mix fetching set up
+
 var happyMixArray = [
-  "https://api.mixcloud.com/search/?q=happy-soul-music&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA",
-  "https://api.mixcloud.com/search/?q=surf&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA",
-  "https://api.mixcloud.com/search/?q=good-times&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA",
-  "https://api.mixcloud.com/search/?q=postive&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA",
-  "https://api.mixcloud.com/search/?q=uplifting&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA",
-  "https://api.mixcloud.com/search/?q=exciting&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA",
-  "https://api.mixcloud.com/search/?q=katamari&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA",
-  "https://api.mixcloud.com/search/?q=katamari&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA",
-  "https://api.mixcloud.com/search/?q=katamari&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA",
-  "https://api.mixcloud.com/search/?q=katamari&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA",
+  "happy-soul-music&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA",
+  "surf&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA",
+  "good-times&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA",
+  "postive&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA",
+  "uplifting&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA",
+  "exciting&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA",
+  "katamari&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA",
+  "katamari&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA",
+  "katamari&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA",
+  "katamari&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA",
 ]
 
-function fetchHappyMix(happyMixArray){
-fetch(happyMixArray, {
-  cache: "reload",
-})
-.then(function (response) {
-  return response.json();
-})
-.then(function (data) {
-console.log(data)
-var happyMixName = data.data[0].name;
-document.querySelector("#happymix-name").textContent = happyMixName;
-var happyMixLink = data.data[0].url;
-document.querySelector("#happymix-image").setAttribute("href", happyMixLink);
-var happyMixImage = data.data[0].pictures.large;
-document.querySelector("#happymix-image").setAttribute("src", happyMixImage);
-})
-}
-//function to randomize choice
-function genNext(array){
-  const randomNum = Math.floor(Math.random()*array.length)
-  return array[randomNum];
-}
-//render happy options of books mixes and movies 
-function renderHappy(){
-  var happyMix = genNext(happyMixArray); 
-  fetchHappyMix(happyMix);
-  var happyMovies= genNext(happyMoviesArray);
-  fetchHappyMovie(happyMovies);
-  var happyBooks= genNext(happyBooksArray)
-  fetchHappyBook(happyBooks);
-}
-//render sad options of books mixes and movies
-function renderSad(){
-  var sadMix = genNext(sadMixArray);
-  fetchSadMix(sadMix);
-  var sadMovies= genNext(sadMovieArray);
-  fetchSadMovie(sadMovies);
-  var sadBooks= genNext(sadBooksArray)
-  fetchSadBook(sadBooks);
+//Sad Arrays
+//Sad Movie API Function
+function getSadMovie() {
+  var concatSadMovieUrl = movieUrl + sadMoviesArray[Math.floor(Math.random() * 10)];
+  console.log(concatSadMovieUrl);
 
+  $.ajax({
+    url: concatSadMovieUrl,
+    method: 'GET',
+    type: 'POST',
+    dataType: 'json',
+  }).then(function (response) {
+    console.log('Test');
+    console.log(response);
+    console.log(response.Title);
+
+    var sadMovieName = response.Title;
+    $('.sadmovie-title').append(sadMovieName);
+    var sadMoviePoster = response.Poster;
+    $('.sadmovie-poster').attr("src", sadMoviePoster);
+    console.log(sadMoviePoster);
+    var sadMoviePlot = response.Plot;
+    $('.sadmovie-plot').append(sadMoviePlot);
+  });
+};
+
+//Sad Book API Function
+function getSadBook() {
+  var sadBookCall = sadBooks[Math.floor(Math.random() * 11)];
+  console.log(sadBookCall);
+  var sadBookName = sadBookCall.Title;
+  $('.sadbook-title').append(sadBookName);
+  var sadBookCover = sadBookCall.Cover;
+  $('.sadbook-cover').attr("src",);
+  var sadBookAuthor = sadBookCall.Author;
+  $('.sadbook-author').append(sadBookAuthor);
 }
 
 
-$("#sadBtn").on("click", function(){
-  renderSad()
-})
+//Sad Mix API Function
+function getSadMix() {
+  var concatSadMixUrl = mixUrl + sadMixArray[Math.floor(Math.random() * 10)];
+  console.log(concatSadMixUrl);
+  $.ajax({
+    url: concatSadMixUrl,
+    method: 'GET',
+    type: 'POST',
+    dataType: 'json',
+  }).then(function (response) {
+    console.log(response);
+    console.log(response.data[0].name);
+    var sadMixName = response.data[0].name;
+    $('.sadmix-title').append(sadMixName);
+    var sadMixImage = response.data[0].pictures["320wx320h"];
+    $('.sadmix-image').attr("src", sadMixImage);
+    var sadMixArtist = response.data[0].user.name;
+    $('.sadmix-artist').append(sadMixArtist);
+    var sadMixUrl = response.data[0].user.url;
+    $('.sadmix-url').append(sadMixUrl);
+  });
+};
 
-var buttonHappy = $('.button-smile');
-var buttonSad = $('.button-frown');
+//Happy Arrays
+//Happy Movie API Function
+function getHappyMovie() {
+  var concatHappyMovieUrl = movieUrl + happyMoviesArray[Math.floor(Math.random() * 10)];
+  console.log(concatHappyMovieUrl);
 
-var isHappy = false;
-var isSad = false;
+  $.ajax({
+    url: concatHappyMovieUrl,
+    method: 'GET',
+    type: 'POST',
+    dataType: 'json',
+  }).then(function (response) {
+    console.log('Test');
+    console.log(response);
+    console.log(response.Title);
+    var happyMovieName = response.Title;
+    $('.happymovie-title').append(happyMovieName);
+    var happyMoviePoster = response.Poster;
+    $('.happymovie-poster').attr("src", happyMoviePoster);
+    console.log(happyMoviePoster);
+    var happyMoviePlot = response.Plot;
+    $('.happymovie-plot').append(happyMoviePlot);
+  });
+};
+//Happy Book API Function
+function getHappyBook() {
+  var happyBookCall = happyBooks[Math.floor(Math.random() * 11)];
+  console.log(happyBookCall);
+  var happyBookName = happyBookCall.Title;
+  $('.happybook-title').append(happyBookName);
+  var happyBookCover = happyBookCall.Cover;
+  $('happybook-cover').attr("src", happyBookCover);
+  var happyBookAuthor = happyBookCall.Author;
+  $('.happybook-author').append(happyBookAuthor);
+}
+//Happy Mix API Function
+function getHappyMix() {
+  var concatHappyMixUrl = mixUrl + happyMixArray[Math.floor(Math.random() * 10)];
+  console.log(concatHappyMixUrl);
+  $.ajax({
+    url: concatHappyMixUrl,
+    method: 'GET',
+    type: 'POST',
+    dataType: 'json',
+  }).then(function (response) {
+    console.log('Test');
+    console.log(response);
+    console.log(response.Title);
+    var happyMixName = response.data[0].name;
+    $('.happymix-title').append(happyMixName);
+    var happyMixImage = response.data[0].pictures["320wx320h"];
+    $('.happymix-image').attr("src", happyMixImage);
+    var happyMixArtist = response.data[0].user.name;
+    $('.happymix-artist').append(happyMixArtist);
+    var happyMixUrl = response.data[0].user.url;
+    $('.happymix-url').append(happyMixUrl);
+  });
+};
 
+//Event Listener Functions
+//Event Listener Happy Button
 buttonHappy.on('click', function () {
-    isHappy = true;
-    isSad = false;
-    if (isHappy = true) {
+  isHappy = true;
+  isSad = false;
+  if (isHappy = true) {
     document.getElementById("goodtext").classList.remove('good-txt');
     console.log("happy button is pushed!!!!!");
-    }
+  }
 });
-    
+//Event Listener Sad Button
 buttonSad.on('click', function () {
-        isHappy = false;
-        isSad = true;
-    if (isSad = true) {
-        document.getElementById("badtext").classList.remove('bad-txt'); 
-        console.log("sad button is pushed!!!!!");
-    }
+  isHappy = false;
+  isSad = true;
+  if (isSad = true) {
+    document.getElementById("badtext").classList.remove('bad-txt');
+    console.log("sad button is pushed!!!!!");
+  }
 });
-
-var resultsPageShow = $('.results-page-shown');
-var resultsPageHidden = $('.results-page-hidden');
-
- // INCORPORATE LOOP HERE!!! TO SEARCH HAPPY OR SAD ARRAYS
-var buttonResults = $('.button-results');
+//Event Listener Result Button 
 buttonResults.on('click', function () {
-if (isSad === true || isHappy === true){
+  if (isSad === true) {
+    getSadMovie();
+    getSadBook();
+    getSadMix();
     document.getElementById("test").classList.add('results-page-shown');
     document.getElementById("test").classList.remove('results-page-hidden');
-    console.log("results button pushed!!");
-}
-     else {
-        alert("You Must Choose Happy or Sad First"); 
-        return;
-       }
+  } else if (isHappy === true) {
+    getHappyMovie();
+    getHappyBook();
+    getHappyMix();
+    document.getElementById("test").classList.add('results-page-shown');
+    document.getElementById("test").classList.remove('results-page-hidden');
+  } else {
+    alert("You Must Choose Happy or Sad First");
+    return;
+  }
 });
 
+//Static APIs
 //Notable Quotes
-
 const settings = {
   async: true,
   crossDomain: true,
@@ -287,7 +369,6 @@ const settings = {
     "X-RapidAPI-Host": "famous-quotes4.p.rapidapi.com",
   },
 };
-
 $.ajax(settings).done(function (response) {
   console.log(response);
   document.querySelector("#notable-quotes").textContent = response[0].text;
@@ -295,8 +376,6 @@ $.ajax(settings).done(function (response) {
 });
 
 // This Day in History
-var currentDay = parseInt(dayjs().format("DD"));
-var currentMonth = parseInt(dayjs().format("MM"));
 $.ajax({
   method: "GET",
   url:
@@ -315,28 +394,24 @@ $.ajax({
   },
 });
 //Joke API
-var limit = 3
 $.ajax({
-    method: 'GET',
-    url: 'https://api.api-ninjas.com/v1/jokes?limit=1', /*+ limit,*/
-    headers: { 'X-Api-Key': 'Zx/7z3+LnT83tllYBTvk+A==t3oKjDpCz5DD8Tyw'},
-    contentType: 'application/json',
-    success: function(result) {
-        console.log(result);
-        document.querySelector('#random-joke').textContent = result[0].joke;
-    }
+  method: 'GET',
+  url: 'https://api.api-ninjas.com/v1/jokes?limit=1', /*+ limit,*/
+  headers: { 'X-Api-Key': 'Zx/7z3+LnT83tllYBTvk+A==t3oKjDpCz5DD8Tyw' },
+  contentType: 'application/json',
+  success: function (result) {
+    console.log(result);
+    document.querySelector('#random-joke').textContent = result[0].joke;
+  }
 
 });
 
-
-var againBtn = $('#button-again');
+//Start Over Function
 function startOver() {
-  againBtn.click(function() {
-    document.getElementById("test").classList.remove('results-page-shown');
-    document.getElementById("test").classList.add('results-page-hidden');
-    isHappy = false;
-    isSad = false;
+  againBtn.click(function () {
+    location.reload();
   }
-)};
+  )
+};
 
 startOver();

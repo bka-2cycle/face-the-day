@@ -7,7 +7,6 @@
   background-color: var(--bs-dark-rgb);
 }
 
-
 /* declaring variables */
 :root {
   --bs-dark-rgb: #000000;
@@ -19,13 +18,9 @@
   --light: #fff;
 }
 
-.rounded {
-  border-top: 2px solid var(--light);
-  border-radius: 5px;
-  margin-top: -0px;
-  min-width: 360px;
+h2 {
+  color: #fc6a09;
 }
-
 
 /* ID Selectors */
 
@@ -51,6 +46,25 @@
 
 /* Class Selectors */
 
+.rounded {
+  border-top: 2px solid var(--light);
+  border-radius: 5px;
+  margin-top: -0px;
+  min-width: 360px;
+}
+
+.card-header {
+  background-color: darkgray;
+  color: #000000;
+}
+
+.sadmovie-poster {
+  width: 200px;
+}
+
+.sadmix-image {
+  width: 200px;
+}
 
 .py-5 {
   padding-top: 0rem !important;
@@ -146,7 +160,6 @@
 
 /* Large smartphones */
 @media screen and (max-width: 768px) {}
-
 
 /* Small smartphones */
 @media screen and (max-width: 576px) {}
