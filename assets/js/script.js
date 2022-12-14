@@ -362,6 +362,7 @@ buttonResults.on('click', function () {
 closeModal.on('click', function() {
   $('#myModal').modal('hide');
   location.reload();
+  //location.reload added
 });
 
 //Static APIs
