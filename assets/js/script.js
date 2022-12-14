@@ -230,7 +230,7 @@ function getSadBook() {
   var sadBookName = sadBookCall.Title;
   $('.sadbook-title').append(sadBookName);
   var sadBookCover = sadBookCall.Cover;
-  $('.sadbook-cover').attr("src",);
+  $('.sadbook-cover').attr("src", sadBookCover);
   var sadBookAuthor = sadBookCall.Author;
   $('.sadbook-author').append(sadBookAuthor);
 }
@@ -290,7 +290,7 @@ function getHappyBook() {
   var happyBookName = happyBookCall.Title;
   $('.happybook-title').append(happyBookName);
   var happyBookCover = happyBookCall.Cover;
-  $('happybook-cover').attr("src", happyBookCover);
+  $('.happybook-cover').attr("src", happyBookCover);
   var happyBookAuthor = happyBookCall.Author;
   $('.happybook-author').append(happyBookAuthor);
 }
