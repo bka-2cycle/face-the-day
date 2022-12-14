@@ -3,35 +3,39 @@ var resultsPage = $('.results-page-hidden');
 
 
 //happy movies array using Omdb API links(Praying it wokrs)(edit:Thanks Bryan)
-
+var movieUrl = "https://www.omdbapi.com/"
 var happyMoviesArray = [
-  "https://www.omdbapi.com/?t=Little-Miss-Sunshine&apikey=189f17cc",
-  "https://www.omdbapi.com/?t=Love-Actually&apikey=189f17cc",
-  "https://www.omdbapi.com/?t=Good-Will-Hunting&apikey=189f17cc",
-  "https://www.omdbapi.com/?t=Forrest%20Gump&apikey=189f17cc",
-  "https://www.omdbapi.com/?t=Despicable-Me&apikey=189f17cc",
-  "https://www.omdbapi.com/?t=Sound-of-Music&apikey=189f17cc",
-  "https://www.omdbapi.com/?t=It%27s-A-Wonderful-Life&apikey=189f17cc",
-  "https://www.omdbapi.com/?t=singin-in-the-rain&apikey=189f17cc",
-  "https://www.omdbapi.com/?t=Inside-Out&apikey=189f17cc",
-  "https://www.omdbapi.com/?t=Goonies&apikey=189f17cc",
+  "?t=Little-Miss-Sunshine&apikey=189f17cc",
+  "?t=Love-Actually&apikey=189f17cc",
+  "?t=Good-Will-Hunting&apikey=189f17cc",
+  "?t=Forrest%20Gump&apikey=189f17cc",
+  "?t=Despicable-Me&apikey=189f17cc",
+  "?t=Sound-of-Music&apikey=189f17cc",
+  "?t=It%27s-A-Wonderful-Life&apikey=189f17cc",
+  "?t=singin-in-the-rain&apikey=189f17cc",
+  "?t=Inside-Out&apikey=189f17cc",
+  "?t=Goonies&apikey=189f17cc",
 ]
 //same for sad movies
 var sadMoviesArray = [
-  "https://www.omdbapi.com/?t=Requiem-for-a-Dream&apikey=189f17cc",
-  "https://www.omdbapi.com/?t=Sophie%27s-Choice&apikey=189f17cc",
-  "https://www.omdbapi.com/?t=Schindler%27s-List&apikey=189f17cc",
-  "https://www.omdbapi.com/?t=Boys-Don%27t-Cry&apikey=189f17cc",
-  "https://www.omdbapi.com/?t=Philadelphia&apikey=189f17cc",
-  "https://www.omdbapi.com/?t=Finding%20Neverland&apikey=189f17cc",
-  "https://www.omdbapi.com/?t=The-Green-Mile&apikey=189f17cc",
-  "https://www.omdbapi.com/?t=The%20Sisterhood%20of%20the%20Traveling%20Pants&apikey=189f17cc",
-  "https://www.omdbapi.com/?t=Titanic&apikey=189f17cc",
-  "https://www.omdbapi.com/?t=The%20Notebook&apikey=189f17cc",
+  "?t=Requiem-for-a-Dream&apikey=189f17cc",
+  "?t=Sophie%27s-Choice&apikey=189f17cc",
+  "?t=Schindler%27s-List&apikey=189f17cc",
+  "?t=Boys-Don%27t-Cry&apikey=189f17cc",
+  "?t=Philadelphia&apikey=189f17cc",
+  "?t=Finding%20Neverland&apikey=189f17cc",
+  "?t=The-Green-Mile&apikey=189f17cc",
+  "?t=The%20Sisterhood%20of%20the%20Traveling%20Pants&apikey=189f17cc",
+  "?t=Titanic&apikey=189f17cc",
+  "?t=The%20Notebook&apikey=189f17cc",
 ]
+function fetchMovieUrl(){
+  fetch(`"${movieUrl}"`+`"?t=${sadMoviesArray[Math.floor(Math.random() * 10)]}"`)
+}
+console.log(movieUrl)
 //fetch function for happy/sad movies
 function fetchHappyMovie(happyMoviesArray){
-fetch (happyMoviesArray, {
+fetch (happyMoviesArray[0], {
 
   cache: 'reload',
 })
@@ -45,14 +49,15 @@ fetch (happyMoviesArray, {
     // var movieGenre = data.Genre;
     // document.querySelector('#movie-genre').textContent = movieGenre;
     var happyMoviePoster = data.Poster;
-    document.querySelector('#movie-poster').setAttribute("src", happyMoviePoster);
+    document.querySelector('#happymovie-poster').setAttribute("src", happyMoviePoster);
     var happyMoviePlot =data.Plot;
-    document.querySelector('#movie-plot').textContent = happyMoviePlot;
+    document.querySelector('#happymovie-plot').textContent = happyMoviePlot;
     var happyMovieReleaseDate = data.Released;
-document.querySelector("#movie-release-date").textContent = happyMovieReleaseDate;
+document.querySelector("#happymovie-release-date").textContent = happyMovieReleaseDate;
 
   });
 }
+console.log(happyMoviesArray[""])
 //fetch function for sad Movies
 function fetchSadMovie(sadMoviesArray){
   fetch (sadMoviesArray, {
@@ -72,7 +77,7 @@ function fetchSadMovie(sadMoviesArray){
       document.querySelector('#sadmovie-plot').textContent = sadMoviePlot;
       var sadMovieReleaseDate = data.Released;
   document.querySelector("#sadmovie-release-date").textContent = sadMovieReleaseDate;
-  
+  console.log(fetchSadMovie)
     });
   }
 //books array
@@ -104,7 +109,7 @@ var sadBooksArray = [
 //end of books array
 
 //book function that is fetch request templates
-function fetchHappyBook(happyBooksArray)
+function fetchHappyBook(happyBooksArray) {
 fetch(happyBooksArray, {
     cache: "reload",
 })
@@ -114,13 +119,14 @@ fetch(happyBooksArray, {
 .then(function (data) {
 var happyBookName = data.items[0].volumeInfo.title;
 document.querySelector("#happybook-name").textContent = happyBookName;
-var happyBookPlot = data.items[5].volumeInfo.description;
+var happyBookPlot = data.items[0].volumeInfo.description;
 document.querySelector("#happybook-plot").textContent = happyBookPlot;
 var happyBookImage = data.items[0].volumeInfo.imageLinks.thumbnail;
 document.querySelector("#happybook-img").setAttribute("src", happyBookImage)
 })
+}
 //fetch function
-function fetchSadBook(sadBooksArray)
+function fetchSadBook(sadBooksArray) {
 fetch(sadBooksArray, {
     cache: "reload",
 })
@@ -135,7 +141,7 @@ document.querySelector("#sadbook-plot").textContent = sadBookPlot;
 var sadBookImage = data.items[0].volumeInfo.imageLinks.thumbnail;
 document.querySelector("#sadbook-img").setAttribute("src", sadBookImage)
 })
-
+}
 //Mixcloud "Sad" API search
 var sadMixArray = [
   "https://api.mixcloud.com/search/?q=sad&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA",
@@ -181,19 +187,6 @@ var happyMixArray = [
   "https://api.mixcloud.com/search/?q=katamari&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA",
 ]
 
-// var happyMix = "https://api.mixcloud.com/search/?q=happy-vibes&type=cloudcast&_gl=1*1mx0sf6*_ga*MTQzMTE0MTQyMy4xNjcwODY3NTE1*_ga_F1JH45MWZ3*MTY3MDg2NzUxNC4xLjEuMTY3MDg2NzY5NC4wLjAuMA"
-
-// fetch(happyMix, {
-//   cache: "reload",
-// })
-// .then(function (response) {
-//   return response.json();
-// })
-// .then(function (data) {
-// console.log(data)
-// var happyMixNames = data.data[0]
-// })
-
 function fetchHappyMix(happyMixArray){
 fetch(happyMixArray, {
   cache: "reload",
@@ -236,7 +229,7 @@ function renderSad(){
 
 }
 
-});
+
 $("#sadBtn").on("click", function(){
   renderSad()
 })
@@ -339,9 +332,10 @@ $.ajax({
 var againBtn = $('#button-again');
 function startOver() {
   againBtn.click(function() {
-    preventDefault();
-    resultsPage.classList.add('results-page-hidden');
-    resultsPage.classList.remove('results-page-shown');
+    document.getElementById("test").classList.remove('results-page-shown');
+    document.getElementById("test").classList.add('results-page-hidden');
+    isHappy = false;
+    isSad = false;
   }
 )};
 
