@@ -34,7 +34,6 @@ h2 {
   background-color: #000000;
 }
 
-
 #sad-result-text {
   display: none;
   visibility: hidden;
@@ -175,4 +174,9 @@ h2 {
 @media screen and (max-width: 768px) {}
 
 /* Small smartphones */
-@media screen and (max-width: 576px) {}
+@media screen and (max-width: 576px) {
+  .justify-content-sm-center {
+    align-items: center !important;
+    justify-content: center !important;
+  }
+}
