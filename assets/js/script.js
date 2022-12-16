@@ -95,7 +95,7 @@ var sadBooks = [
   {
     Title: 'If He Had Been With Me',
     Author: 'Laura Nowlin',
-    Cover: './images/sad-book-img/if-he-had-been-there-with-me.jpg'
+    Cover: './images/sad-book-img/if-he-had-been-with-me.jpg'
   },
   {
     Title: 'Obsession',
@@ -117,7 +117,7 @@ var happyBooks = [
   {
     Title: 'Remarkably Bright Creatures',
     Author: 'Shelby Van Pelt',
-    Cover: './images/happy-book-img/remarkable-bright-creatures.jpg'
+    Cover: './images/happy-book-img/remarkably-bright-creatures.jpg'
   },
   {
     Title: 'The Comfort Book',
@@ -324,9 +324,9 @@ function getHappyMix() {
 buttonHappy.on('click', function () {
     document.getElementById('smile-alt').src='./images/btn-sml-2.png'
   isHappy = true;
-  isSad = false;
   
-  if (isHappy = true) {
+  
+  if (isHappy === true) {
     document.getElementById("goodtext").classList.remove('good-txt');
     console.log("happy button is pushed!!!!!");
   }
@@ -334,17 +334,22 @@ buttonHappy.on('click', function () {
 //Event Listener Sad Button     "document.getElementById('frown-alt').src='./images/btn-sad-2.png'"
 buttonSad.on('click', function () {
     document.getElementById('frown-alt').src='./images/btn-sad-2.png'
-  isHappy = false;
+  
   isSad = true;
   
-  if (isSad = true) {
+  if (isSad === true) {
     document.getElementById("badtext").classList.remove('bad-txt');
     console.log("sad button is pushed!!!!!");
   }
 });
 //Event Listener Result Button 
 buttonResults.on('click', function () {
-  if (isSad === true) {
+    console.log(isHappy);
+    console.log(isSad);
+    if (isHappy === true && isSad === true) {
+        $('#myModal').modal('show');
+      }
+      else if (isSad === true) {
     getSadMovie();
     getSadBook();
     getSadMix();
@@ -356,9 +361,7 @@ buttonResults.on('click', function () {
     getHappyMix();
     document.getElementById("test").classList.add('results-page-shown');
     document.getElementById("test").classList.remove('results-page-hidden');
-  } else if (isHappy === true && isSad === true) {
-    $('#myModal').modal('show');
-  } else {
+  }  else {
     $('#myModal').modal('show');
     return;
   }
