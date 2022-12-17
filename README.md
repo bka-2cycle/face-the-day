@@ -25,7 +25,7 @@ If you don't choose a mood a prompt will remind you to select "Happy" or "Sad" t
 
 ![Prompt for mood choice](./images/app_2.png)
 
-Based on your mood you'll get a movie, song and book suggestions
+Based on your mood you'll get a movie, music mix and book suggestions
 
 ![Mood suggestions](./images/app_3.jpg)
 
